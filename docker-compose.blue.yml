@@ -8,3 +8,9 @@ services:
       - VERSION=BLUE
     ports:
       - "3002:3000"
+    networks:
+      - devops-net
+
+networks:
+  devops-net:
+    external: true
