@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  blue-app:
+    image: myapp:v1
+    container_name: blue-app
+    environment:
+      - VERSION=BLUE
+    ports:
+      - "3002:3000"

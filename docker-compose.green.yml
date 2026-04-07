@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  green-app:
+    image: myapp:v1
+    container_name: green-app
+    environment:
+      - VERSION=GREEN
+    ports:
+      - "3003:3000"
