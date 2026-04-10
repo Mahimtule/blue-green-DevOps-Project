@@ -17,7 +17,7 @@ const version = process.env.APP_VERSION || "blue";
 
 app.get('/', (req, res) => {
     httpRequests.inc();
-    res.send(`Hello from ${version}`);
+    res.send(`APP is running on ${version}`);
 });
 
 app.get('/health', (req, res) => {
