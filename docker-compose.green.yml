@@ -1,9 +1,9 @@
 services:
   green-app:
-    image: myapp:v15
+    image: ${IMAGE_NAME}:${TAG}
     container_name: green-app
     environment:
-      - VERSION=GREEN
+      - APP_VERSION=GREEN
     ports:
       - "3003:3000"
     networks:

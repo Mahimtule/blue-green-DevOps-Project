@@ -2,10 +2,10 @@ version: '3'
 
 services:
   blue-app:
-    image: myapp:v15
+    image: ${IMAGE_NAME}:${TAG}
     container_name: blue-app
     environment:
-      - VERSION=BLUE
+      - APP_VERSION=BLUE
     ports:
       - "3002:3000"
     networks:
