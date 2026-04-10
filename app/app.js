@@ -1,12 +1,34 @@
-const http = require('http');
+const express = require('express');
+const client = require('prom-client');
 
-const version = process.env.VERSION || "v1";
+const app = express();
+const register = new client.Registry();
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end(`Hello from ${version}\n`);
+client.collectDefaultMetrics({ register });
+
+const httpRequests = new client.Counter({
+    name: 'http_requests_total',
+    help: 'Total number of requests',
 });
 
-server.listen(3000, () => {
-    console.log(`Server running on port 3000 - ${version}`);
+register.registerMetric(httpRequests);
+
+const version = process.env.APP_VERSION || "blue";
+
+app.get('/', (req, res) => {
+    httpRequests.inc();
+    res.send(`Hello from ${version}`);
+});
+
+app.get('/health', (req, res) => {
+    res.status(200).send("OK");
+});
+
+app.get('/metrics', async (req, res) => {
+    res.set('Content-Type', register.contentType);
+    res.end(await register.metrics());
+});
+
+app.listen(3000, () => {
+    console.log(`App running`);
 });

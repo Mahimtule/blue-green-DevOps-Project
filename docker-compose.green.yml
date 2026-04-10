@@ -1,6 +1,6 @@
 services:
   green-app:
-    image: myapp:v1
+    image: myapp:v15
     container_name: green-app
     environment:
       - VERSION=GREEN

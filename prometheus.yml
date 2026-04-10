@@ -9,3 +9,13 @@ scrape_configs:
   - job_name: 'cadvisor'
     static_configs:
       - targets: ['cadvisor:8080']
+
+  - job_name: 'blue-app'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['blue-app:3000']
+
+  - job_name: 'green-app'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['green-app:3000']
