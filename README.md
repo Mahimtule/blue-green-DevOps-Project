@@ -9,7 +9,7 @@ automated via Jenkins and monitored using Prometheus & Grafana.
 
 Architecture:
 
-
+<img width="1536" height="1024" alt="Architecture" src="https://github.com/user-attachments/assets/ce273ae4-3331-47a1-8803-3de106967f64" />
 
 Tech Stack:
 
